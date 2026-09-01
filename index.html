@@ -6,6 +6,7 @@
 <title>Termômetro Global — 6º Ano</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+button,[onclick]{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 :root{
   --blue:#4A90D9;
   --pink:#E84393;
@@ -86,6 +87,7 @@ p{font-size:15px;color:var(--txt2);line-height:1.7}
 .feedback.show{display:block}
 .feedback.ok{background:var(--ok-bg);color:var(--ok-txt);border:0.5px solid var(--ok-border)}
 .feedback.err{background:var(--err-bg);color:var(--err-txt);border:0.5px solid var(--err-border)}
+.feedback.warn{background:var(--warn-bg);color:var(--warn-txt);border:0.5px solid var(--warn-border)}
 .q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.1rem}
 .btn{padding:10px 20px;border:1px solid var(--border2);border-radius:var(--r);background:transparent;cursor:pointer;font-size:15px;color:var(--txt2);transition:.2s;font-family:inherit}
 .btn:hover{background:var(--card2);color:var(--txt)}
@@ -150,6 +152,43 @@ footer a:hover{text-decoration:underline}
 .cobrade-btn.ok{background:var(--ok-bg);border-color:var(--ok-border);color:var(--ok-txt)}
 .cobrade-btn:disabled{cursor:default}
 .term-fb{margin-top:.9rem}
+
+/* ══════ CABEÇALHO PEDAGÓGICO DA AULA (padrão para todas as atividades) ══════ */
+.aula-cab{background:linear-gradient(135deg,#1f4a34,#2f6b4a);border-radius:var(--r2);padding:16px 18px;margin-bottom:1.1rem;color:#eef7f1;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.aula-cab-n{display:inline-block;background:rgba(255,255,255,.20);border-radius:20px;padding:4px 13px;font-size:11px;font-weight:900;letter-spacing:.13em;margin-bottom:9px}
+.aula-cab-t{display:block;font-size:20px;font-weight:900;line-height:1.3;margin-bottom:4px}
+.aula-cab-s{display:block;font-size:13px;color:#bfe0cd;font-weight:600;line-height:1.5}
+.aula-obj{background:rgba(255,255,255,.13);border-left:4px solid #8fd6ad;border-radius:9px;padding:12px 14px;margin-top:12px}
+.aula-obj-t{display:block;font-size:11px;font-weight:900;letter-spacing:.11em;color:#a9e2c2;margin-bottom:6px}
+.aula-obj p{margin:0 0 7px;font-size:13.8px;line-height:1.65;color:#eef7f1}
+.aula-obj p:last-child{margin-bottom:0}
+.aula-obj b{color:#fff}
+.aula-ficha{display:grid;grid-template-columns:1fr;gap:7px;margin-top:12px}
+@media(min-width:640px){.aula-ficha{grid-template-columns:1fr 1fr}}
+.aula-ficha-l{background:rgba(0,0,0,.16);border-radius:8px;padding:9px 11px}
+.aula-ficha-l i{display:block;font-style:normal;font-size:10px;font-weight:900;letter-spacing:.1em;color:#9fd8ba;margin-bottom:3px}
+.aula-ficha-l span{display:block;font-size:12.3px;line-height:1.5;color:#e6f4ec}
+.aula-ficha-l.larga{grid-column:1/-1}
+@media(prefers-reduced-motion:reduce){.aula-cab{transition:none}}
+.farme-audio{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:11px 14px;margin-bottom:1.1rem}
+.farme-audio-play{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:24px;border:none;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:800;background:#eef7f1;color:#1f4a34;box-shadow:0 3px 0 rgba(0,0,0,.18);transition:transform .15s,box-shadow .15s}
+.farme-audio-play:hover{transform:translateY(-1px)}
+.farme-audio-play:active{transform:translateY(1px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
+.farme-audio-play.pulsa{animation:farmePulsa 1.8s ease-in-out infinite}
+@keyframes farmePulsa{0%,100%{box-shadow:0 3px 0 rgba(0,0,0,.18),0 0 0 0 rgba(238,247,241,.55)}50%{box-shadow:0 3px 0 rgba(0,0,0,.18),0 0 0 9px rgba(238,247,241,0)}}
+.farme-audio-sec{padding:9px 16px;font-size:13px;font-weight:700;border-radius:20px;border:1.5px solid rgba(255,255,255,.4);color:#eef7f1;background:rgba(255,255,255,.08);cursor:pointer;font-family:inherit;transition:.15s}
+.farme-audio-sec:hover{background:rgba(255,255,255,.2)}
+.farme-audio-onda{display:none;align-items:center;gap:2px;height:16px}
+.farme-audio-onda span{width:3px;background:#eef7f1;border-radius:2px;display:block;animation:farmeOnda .9s ease-in-out infinite}
+.farme-audio-onda span:nth-child(1){height:7px;animation-delay:0s}
+.farme-audio-onda span:nth-child(2){height:16px;animation-delay:.15s}
+.farme-audio-onda span:nth-child(3){height:11px;animation-delay:.3s}
+@keyframes farmeOnda{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+.farme-audio-status{font-size:12px;color:#bfe0cd;font-weight:700}
+.farme-audio-vozwrap{display:flex;align-items:center;gap:6px;font-size:12px;color:#bfe0cd;font-weight:700;margin-left:auto}
+.farme-audio-vozwrap select{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.35);color:#eef7f1;border-radius:8px;padding:6px 8px;font-family:inherit;font-size:12.5px;cursor:pointer;max-width:190px}
+.farme-audio-vozwrap select option{color:#1a1a1a}
+@media(prefers-reduced-motion:reduce){.farme-audio-play.pulsa{animation:none}.farme-audio-onda span{animation:none}}
 </style>
 </head>
 <body>
@@ -175,6 +214,39 @@ footer a:hover{text-decoration:underline}
 
   <!-- ══════════════════════ TUTORIAL ══════════════════════ -->
   <div id="tutorial" class="section active">
+    <div class="aula-cab">
+      <span class="aula-cab-n">GEOGRAFIA · 6º ANO · 3º BIMESTRE · AULAS 6 E 7</span>
+      <span class="aula-cab-t">Mudanças climáticas e eventos extremos</span>
+      <span class="aula-cab-s">Aquecimento global, seus efeitos em cadeia e a classificação COBRADE dos desastres climáticos.</span>
+
+      <div class="aula-obj">
+        <span class="aula-obj-t">🎯 O QUE VAMOS APRENDER NESTA AULA</span>
+        <p><b>Objetivo:</b> explicar as mudanças climáticas e relacioná-las ao aquecimento global, analisar a situação dos refugiados climáticos, e identificar e explicar os principais tipos de eventos extremos.</p>
+        <p><b>Conceito abordado:</b> o <b>efeito estufa</b> é natural e mantém a Terra aquecida o suficiente para a vida existir — o problema é o efeito estufa <b>intensificado</b> pelas atividades humanas (queima de combustíveis fósseis, desmatamento, pecuária e lixo), que retém calor demais e causa o <b>aquecimento global</b>. Esse aquecimento provoca uma cadeia de efeitos — derretimento de geleiras, elevação do mar, refugiados climáticos e eventos extremos mais frequentes, classificados pela <b>COBRADE</b> em meteorológicos, hidrológicos ou climatológicos.</p>
+      </div>
+
+      <div class="aula-ficha">
+        <div class="aula-ficha-l larga"><i>HABILIDADE</i><span><b>EF06GE13</b> — Analisar as causas e os efeitos das mudanças climáticas em diferentes espaços, comparando as diferentes explicações, inclusive as advindas de negacionismo científico, considerando as escalas de tempo geológico e histórico.</span></div>
+        <div class="aula-ficha-l larga"><i>APRENDIZAGEM ESSENCIAL</i><span><b>AE5</b> — Analisar as causas e consequências das práticas humanas na dinâmica climática, considerando os fenômenos climáticos e o aquecimento global, e relacionando-os às mudanças climáticas, aos eventos extremos e ao risco de desastres.</span></div>
+        <div class="aula-ficha-l"><i>CONTEÚDO DAS AULAS 6 E 7</i><span>Aula 6 — Mudanças climáticas, aquecimento global e refugiados climáticos. Aula 7 — Eventos climatológicos e meteorológicos, classificados pela COBRADE.</span></div>
+        <div class="aula-ficha-l"><i>OBJETIVOS DA APRENDIZAGEM</i><span>Explicar as mudanças climáticas e relacioná-las ao aquecimento global; analisar a situação dos refugiados climáticos; identificar e explicar os principais tipos de eventos extremos.</span></div>
+        <div class="aula-ficha-l"><i>COMPETÊNCIA SOCIOEMOCIONAL</i><span>Organização, foco e responsabilidade.</span></div>
+        <div class="aula-ficha-l"><i>PLANO DE AULA</i><span>3º Bimestre — PEI 2026 · Prof. Me. Christopher De Andrade Cardoso · EE Prefeito Edison Bastos Gasparini</span></div>
+      </div>
+    </div>
+
+    <div class="farme-audio" id="farmeAudio">
+      <button class="farme-audio-play pulsa" id="btnLer" onclick="FarmeKit.lerTutorial()">🔊 Clique aqui para ouvir o texto</button>
+      <button class="farme-audio-sec" id="btnPausar" style="display:none" onclick="FarmeKit.pausarTutorial()">⏸️ Pausar</button>
+      <button class="farme-audio-sec" id="btnParar" style="display:none" onclick="FarmeKit.pararTutorial()">⏹️ Parar</button>
+      <span class="farme-audio-onda" id="audioOnda"><span></span><span></span><span></span></span>
+      <span class="farme-audio-status" id="audioStatus"></span>
+      <div class="farme-audio-vozwrap">
+        <label for="vozSelect">🗣️ Voz:</label>
+        <select id="vozSelect"></select>
+      </div>
+    </div>
+
     <h2>Por que a Terra está esquentando?</h2>
 
     <div class="card">
@@ -258,6 +330,7 @@ footer a:hover{text-decoration:underline}
     <div class="score-box" id="scorebox">
       <div class="score-n" id="scoren"></div>
       <div class="score-s" id="scores"></div>
+      <div id="quizFarmeResultado" style="margin-top:1.25rem;text-align:left"></div>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:1.75rem">
         <button class="btn" onclick="restartQ()">Tentar novamente</button>
         <button class="btn btn-p" onclick="show('pratica')">Ir para a Prática →</button>
@@ -287,7 +360,284 @@ footer a:hover{text-decoration:underline}
 </div>
 
 <script>
+/* ═══════════════════════════════════════════════════════════════════════
+   KIT FARME AURA v2 — trilha de Quest, anti-trapaça e audiolivro
+   Bloco único, igual em TODAS as atividades. Não editar por atividade:
+   o que muda de uma para outra são só as chamadas de FarmeKit.*
+   ═══════════════════════════════════════════════════════════════════════ */
+const FarmeKit = (function(){
+  const dentroDoFarme = window.parent && window.parent !== window;
+
+  /* ─────────── 1. ESTADO ─────────── */
+  const st = {
+    quizAcertos:0, quizTotal:0, quizConcluido:false,
+    pratAcertos:0, pratTotal:0, pratConcluida:false,
+    pontos:0,
+    melhorPontos:0,      // marca d'água: refazer pior nunca reenvia
+    melhorPct:-1,        // idem para o percentual
+    vozPreferida:null
+  };
+  const MINIMO_PCT = 85;
+
+  /* ─────────── 2. GUARDA ANTI-CLIQUE ───────────
+     Um só guarda para o Quiz E para a Prática. Antes eram dois, com
+     tempos diferentes (280ms no quiz, 400ms na prática) — o quiz ficava
+     mais frouxo justamente onde é mais fácil clicar em rajada.
+     - travado: só destrava quando o aluno fecha a explicação
+     - MIN_MS:  intervalo mínimo entre duas respostas
+     - alvoOk:  o clique tem que nascer no elemento certo, não em
+                qualquer lugar que por acaso esteja sob o cursor       */
+  const guarda = { travado:false, ultimo:0, MIN_MS:450 };
+
+  function podeResponder(ev){
+    const agora = Date.now();
+    if(guarda.travado) return false;
+    if(agora - guarda.ultimo < guarda.MIN_MS) return false;
+    /* Clique sintético (autoclicker/script) não tem isTrusted */
+    if(ev && ev.isTrusted === false) return false;
+    guarda.travado = true; guarda.ultimo = agora;
+    return true;
+  }
+  function liberar(){ guarda.travado = false; }
+
+  /* ─────────── 3. EMBARALHAR ───────────
+     Fisher-Yates. Usar SEMPRE nas perguntas, nas alternativas e na ordem
+     dos itens da prática — a cada tentativa, não só na primeira carga. */
+  function embaralhar(arr){
+    const a = arr.slice();
+    for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+    return a;
+  }
+  /* Embaralha as alternativas de UMA questão mantendo o índice certo */
+  function embaralharOpcoes(q){
+    const idx = embaralhar(q.opts.map((_,i)=>i));
+    return { ...q, opts: idx.map(i=>q.opts[i]), ci: idx.indexOf(q.ci) };
+  }
+  /* Embaralha ordem das questões + alternativas, evitando a mesma letra
+     três vezes seguidas (o aluno percebe padrão antes de perceber conteúdo) */
+  function prepararQuiz(bruto){
+    const ordem = embaralhar(bruto);
+    const out = ordem.map(embaralharOpcoes);
+    for(let i=2;i<out.length;i++){
+      let t=0;
+      while(out[i].ci===out[i-1].ci && out[i].ci===out[i-2].ci && t<25){ out[i]=embaralharOpcoes(ordem[i]); t++; }
+    }
+    return out;
+  }
+
+  /* ─────────── 4. PLACAR E ENVIO ─────────── */
+  function itensTotal(){ return st.quizTotal + st.pratTotal; }
+  function acertosTotal(){ return st.quizAcertos + st.pratAcertos; }
+  function percentual(){
+    const t = itensTotal();
+    return t ? Math.round(acertosTotal()/t*100) : 0;
+  }
+  function concluida(){ return st.quizConcluido && st.pratConcluida; }
+  function validada(){ return concluida() && percentual() >= MINIMO_PCT; }
+  function faltamParaValidar(){
+    return Math.max(0, Math.ceil(itensTotal()*MINIMO_PCT/100) - acertosTotal());
+  }
+
+  /* Chamada pela atividade sempre que acerto/conclusão mudarem */
+  function atualizar(dados){
+    Object.assign(st, dados||{});
+    enviar();
+    return st;
+  }
+
+  function enviar(){
+    const pct = percentual();
+    /* Só sobe. Refazer e ir pior não tira nada do aluno, e não
+       rebaixa a referência do FARME (era assim que dava pra farmar
+       aura repetindo o quiz dentro da mesma abertura). */
+    const subiuPontos = st.pontos > st.melhorPontos;
+    const subiuPct    = pct > st.melhorPct;
+    if(!subiuPontos && !subiuPct) return;
+    if(subiuPontos) st.melhorPontos = st.pontos;
+    if(subiuPct)    st.melhorPct = pct;
+
+    if(!dentroDoFarme) return;
+    window.parent.postMessage({
+      tipo:'FARME_ATIVIDADE_SCORE',
+      pontos: Math.max(0, Math.round(st.melhorPontos)),
+      /* trilha de quest */
+      corrects: acertosTotal(),
+      totals:   itensTotal(),
+      percentual: pct,
+      concluida: concluida(),
+      validada:  validada(),
+      minimo:    MINIMO_PCT,
+      detalhe: {
+        quiz:    { acertos: st.quizAcertos, total: st.quizTotal, concluido: st.quizConcluido },
+        pratica: { acertos: st.pratAcertos, total: st.pratTotal, concluida: st.pratConcluida }
+      },
+      atividade: document.title || 'Atividade',
+      timestamp: Date.now()
+    }, '*');
+  }
+
+  /* ─────────── 5. BLOCO DE RESULTADO (HTML pronto) ─────────── */
+  function blocoResultado(){
+    const pct = percentual(), ok = validada(), faltam = faltamParaValidar();
+    const cor = ok ? '#4f9e6a' : (concluida() ? '#c9a227' : '#7d8a99');
+    let msg;
+    if(!concluida()){
+      const falta = [];
+      if(!st.quizConcluido)  falta.push('terminar o <b>Quiz</b>');
+      if(!st.pratConcluida)  falta.push('terminar a <b>Prática</b>');
+      msg = `Para valer na trilha, falta ${falta.join(' e ')}. As duas partes contam juntas.`;
+    } else if(ok){
+      msg = 'Você ganhou <b>1/5 da barra de Quest</b>. Cinco atividades assim valem <b>1 ponto</b> para trocar na Loja.';
+    } else {
+      msg = `Para valer na trilha são <b>${MINIMO_PCT}%</b> — faltaram <b>${faltam}</b> acerto(s). `
+          + 'Pode refazer: <b>vale a melhor tentativa</b>, você não perde nada do que já fez.';
+    }
+    return `
+      <div class="card" style="border-left:4px solid ${cor}">
+        <strong style="font-size:15px">${ok?'✅ Atividade validada!':'📊 Seu desempenho'}</strong>
+        <p style="margin-top:.5rem">Você acertou <b>${acertosTotal()} de ${itensTotal()}</b> — <b>${pct}%</b><br>
+          <span style="font-size:13px;opacity:.85">Quiz ${st.quizAcertos}/${st.quizTotal} ·
+          Prática ${st.pratAcertos}/${st.pratTotal}</span></p>
+        <p style="margin-top:.4rem">${msg}</p>
+      </div>`;
+  }
+
+  /* ─────────── 6. AUDIOLIVRO DO TUTORIAL ───────────
+     Lê o conteúdo do Tutorial em voz alta. NÃO lê o cabeçalho pedagógico
+     (.aula-cab) nem os botões. A voz vem, em ordem de prioridade: (1) a que
+     o próprio aluno escolheu no seletor local desta atividade (persistida
+     no localStorage do domínio do jogo — funciona mesmo sem o FARME por
+     perto); (2) a que o aluno já escolheu pro Calvão lá no FARME, mandada
+     por postMessage (FARME_CONFIG), já que o iframe é de outro domínio e
+     não enxerga o localStorage do FARME; (3) uma voz pt-BR do navegador,
+     como último recurso.                                                */
+  let lendo = false, pausado = false;
+  const CHAVE_VOZ_LOCAL = 'farmeVozEscolhida';
+
+  function vozLocalSalva(){ try{ return localStorage.getItem(CHAVE_VOZ_LOCAL); }catch(e){ return null; } }
+  function salvarVozLocal(nome){ try{ localStorage.setItem(CHAVE_VOZ_LOCAL, nome); }catch(e){} }
+
+  window.addEventListener('message', e => {
+    const d = e.data;
+    /* Se o aluno já escolheu a voz aqui na atividade, essa escolha manda —
+       não deixa uma mensagem do FARME chegando depois sobrescrever. */
+    if(d && d.tipo === 'FARME_CONFIG' && d.voz && !vozLocalSalva()) st.vozPreferida = d.voz;
+  });
+
+  function textoTutorial(){
+    const sec = document.getElementById('tutorial');
+    if(!sec) return '';
+    const copia = sec.cloneNode(true);
+    copia.querySelectorAll('.aula-cab, .farme-audio, button, svg, script').forEach(el=>el.remove());
+    return (copia.innerText || '').replace(/\s+/g,' ').trim();
+  }
+
+  function escolherVoz(){
+    const vozes = window.speechSynthesis.getVoices();
+    if(st.vozPreferida){
+      const v = vozes.find(x => x.name === st.vozPreferida);
+      if(v) return v;
+    }
+    return vozes.find(v => /pt[-_]?br/i.test(v.lang)) || vozes.find(v => /^pt/i.test(v.lang)) || null;
+  }
+
+  /* Preenche o <select id="vozSelect"> (se a atividade tiver um) com as
+     vozes em português disponíveis no navegador do aluno, restaura a
+     escolha salva e passa a ouvir as trocas — tudo automático, a
+     atividade só precisa ter o <select> no HTML, sem JS nenhum a mais. */
+  function popularSeletorVoz(){
+    const sel = document.getElementById('vozSelect');
+    if(!sel || !window.speechSynthesis) return;
+    const vozes = window.speechSynthesis.getVoices();
+    if(!vozes.length) return; // getVoices() pode vir vazio antes do evento voiceschanged
+    const pt = vozes.filter(v => /^pt/i.test(v.lang));
+    const lista = (pt.length ? pt : vozes).slice().sort((a,b)=>a.name.localeCompare(b.name));
+    const salva = vozLocalSalva();
+    sel.innerHTML = lista.map(v =>
+      `<option value="${v.name.replace(/"/g,'&quot;')}">${v.name.replace(/^(Microsoft|Google)\s*/,'')} (${v.lang})</option>`
+    ).join('');
+    if(salva && lista.some(v => v.name===salva)){
+      sel.value = salva; st.vozPreferida = salva;
+    } else if(lista[0] && !st.vozPreferida){
+      st.vozPreferida = lista[0].name; // melhor default disponível, sem precisar clicar
+    }
+    sel.onchange = () => {
+      st.vozPreferida = sel.value;
+      salvarVozLocal(sel.value);
+      if(lendo) lerTutorial(); // troca a voz sem precisar parar e clicar de novo
+    };
+  }
+  if(window.speechSynthesis){
+    popularSeletorVoz();
+    window.speechSynthesis.onvoiceschanged = popularSeletorVoz;
+  }
+
+  function lerTutorial(){
+    if(!window.speechSynthesis){ statusAudio('Seu navegador não tem vozes disponíveis.'); return; }
+    if(pausado){ window.speechSynthesis.resume(); pausado=false; marcar(true); return; }
+    window.speechSynthesis.cancel();
+    const texto = textoTutorial();
+    if(!texto){ statusAudio('Nada para ler aqui.'); return; }
+    /* Uma frase por utterance: o Chrome corta narrações longas, e um
+       tutorial tem uns 4 mil caracteres. */
+    const frases = texto.match(/[^.!?]+[.!?]+|\s*[^.!?]+$/g) || [texto];
+    const voz = escolherVoz();
+    frases.forEach((f,i)=>{
+      const u = new SpeechSynthesisUtterance(f.trim());
+      u.lang='pt-BR'; u.rate=0.98;
+      if(voz) u.voice = voz;
+      if(i===frases.length-1) u.onend = ()=>{ lendo=false; pausado=false; marcar(false); };
+      window.speechSynthesis.speak(u);
+    });
+    lendo = true; marcar(true);
+  }
+  function pausarTutorial(){ if(!lendo) return; window.speechSynthesis.pause(); pausado=true; lendo=false; marcar(false,true); }
+  function pararTutorial(){ if(window.speechSynthesis) window.speechSynthesis.cancel(); lendo=false; pausado=false; marcar(false); }
+
+  /* Três estados visuais bem diferentes entre si — parado (convida a
+     clicar, com destaque e pulso), lendo (onda animada + pausar/parar) e
+     pausado (retomar) — para não ficar "apagado" feito antes. */
+  function marcar(estaLendo, estaPausado){
+    const q = id => document.getElementById(id);
+    if(q('btnLer')){
+      q('btnLer').style.display = estaLendo?'none':'';
+      q('btnLer').classList.toggle('pulsa', !estaLendo);
+      q('btnLer').textContent = estaPausado ? '▶️ Continuar ouvindo' : '🔊 Clique aqui para ouvir o texto';
+    }
+    if(q('btnPausar')) q('btnPausar').style.display = estaLendo?'':'none';
+    if(q('btnParar'))  q('btnParar').style.display  = (estaLendo||estaPausado)?'':'none';
+    if(q('audioOnda')) q('audioOnda').style.display = estaLendo?'inline-flex':'none';
+    statusAudio(estaLendo?'Lendo em voz alta…':(estaPausado?'Pausado':''));
+  }
+  function statusAudio(t){ const e=document.getElementById('audioStatus'); if(e) e.textContent=t; }
+
+  /* Trocar de aba, sair da página ou esconder a aba cala a narração */
+  window.addEventListener('beforeunload', pararTutorial);
+  document.addEventListener('visibilitychange', ()=>{ if(document.hidden) pararTutorial(); });
+
+  /* ─────────── 7. AVISA O FARME QUE CARREGOU ─────────── */
+  if(dentroDoFarme){
+    window.parent.postMessage({ tipo:'FARME_ATIVIDADE_PRONTA', atividade: document.title }, '*');
+  }
+
+  /* Compatibilidade com o kit v1 (atividades ainda não migradas) */
+  window.enviarScoreFarme = function(pontos, extra){
+    extra = extra || {};
+    atualizar({ pontos: pontos||0,
+      quizAcertos: extra.corrects ?? st.quizAcertos,
+      quizTotal:   extra.totals   ?? st.quizTotal });
+  };
+
+  return { st, MINIMO_PCT, atualizar, enviar, podeResponder, liberar,
+           embaralhar, embaralharOpcoes, prepararQuiz,
+           percentual, acertosTotal, itensTotal, concluida, validada,
+           faltamParaValidar, blocoResultado,
+           lerTutorial, pausarTutorial, pararTutorial, dentroDoFarme };
+})();
+/* ════════════════════ FIM DO KIT FARME AURA v2 ════════════════════ */
+
 function show(id){
+  if(id!=='tutorial') FarmeKit.pararTutorial();
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -336,15 +686,9 @@ function toggleSfx(){
 }
 
 /* ✏️ REGRA DE OURO: nunca exibir perguntas/cards na mesma ordem do array
-   fonte — sempre embaralhar a ordem de exibição, além das alternativas. */
-function shuffleArray(arr){
-  const a=arr.slice();
-  for(let i=a.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
-  }
-  return a;
-}
+   fonte — sempre embaralhar a ordem de exibição, além das alternativas.
+   Embaralhar e a trava anti-clique-rápido agora vêm do Kit FARME v2
+   (FarmeKit.embaralhar / FarmeKit.podeResponder / FarmeKit.liberar). */
 
 /* ═══════════════════════ QUIZ — Aulas 6 e 7 (6º ano) ═══════════════════════ */
 const QRAW=[
@@ -405,27 +749,8 @@ const QRAW=[
   }
 ];
 
-function shuffleOne(q){
-  const indices=[0,1,2,3];
-  for(let i=indices.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [indices[i],indices[j]]=[indices[j],indices[i]];
-  }
-  const newOpts=indices.map(i=>q.opts[i]);
-  const newCI=indices.indexOf(q.ci);
-  return {...q,opts:newOpts,ci:newCI};
-}
 function shuffleOpts(qraw){
-  const shuffledOrder=shuffleArray(qraw);
-  const out=shuffledOrder.map(shuffleOne);
-  for(let i=2;i<out.length;i++){
-    let tries=0;
-    while(out[i].ci===out[i-1].ci && out[i].ci===out[i-2].ci && tries<25){
-      out[i]=shuffleOne(shuffledOrder[i]);
-      tries++;
-    }
-  }
-  return out;
+  return FarmeKit.prepararQuiz(qraw);
 }
 
 let QUIZ=shuffleOpts(QRAW);
@@ -453,6 +778,7 @@ function renderQ(){
     const msgs=['Continue praticando! Releia o tutorial com atenção e tente novamente.','Bom progresso! Você está quase dominando o conteúdo!','Muito bem! Você entendeu o conteúdo!','Perfeito! Desempenho de excelência!'];
     document.getElementById('scores').textContent=pct<50?msgs[0]:pct<75?msgs[1]:pct<100?msgs[2]:msgs[3];
     enviarPontuacaoTotal();
+    document.getElementById('quizFarmeResultado').innerHTML=FarmeKit.blocoResultado();
     return;
   }
   document.getElementById('scorebox').style.display='none';
@@ -468,7 +794,7 @@ function renderQ(){
       <div class="q-opts">${q.opts.map((o,i)=>{
         let c='q-opt';
         if(done){c+=' dis';if(i===q.ci)c+=' ok';else if(i===prev)c+=' err';}
-        return `<button class="${c}" onclick="ansQ(${i})">${String.fromCharCode(65+i)}) ${o}</button>`;
+        return `<button class="${c}" ${done?'disabled':''} onclick="ansQ(${i},event)">${String.fromCharCode(65+i)}) ${o}</button>`;
       }).join('')}</div>
     </div>
     <div class="q-nav">
@@ -476,9 +802,10 @@ function renderQ(){
       <span class="q-ctr">${QS.cur+1} de ${QUIZ.length}</span>
     </div>`;
 }
-function ansQ(i){
-  if(uiLocked) return;
-  if(QS.ans[QS.cur]!==null) return;
+function ansQ(i,ev){
+  if(!FarmeKit.podeResponder(ev||window.event)) return;
+  if(uiLocked){ FarmeKit.liberar(); return; }
+  if(QS.ans[QS.cur]!==null){ FarmeKit.liberar(); return; }
   uiLocked=true;
   QS.ans[QS.cur]=i;
   renderQ();
@@ -490,7 +817,6 @@ function prevQ(){ if(uiLocked) return; if(QS.cur>0){QS.cur--;renderQ();} }
 function restartQ(){
   QUIZ=shuffleOpts(QRAW);QS={cur:0,ans:Array(QUIZ.length).fill(null)};quizScore=0;uiLocked=false;
   document.getElementById('balloonOverlay').classList.remove('show','err');
-  enviarPontuacaoTotal();
   renderQ();
 }
 
@@ -560,6 +886,7 @@ function continueBalloon(){
   const overlay=document.getElementById('balloonOverlay');
   if(!overlay.classList.contains('show')) return;
   overlay.classList.remove('show');
+  FarmeKit.liberar();
   QS.cur++;
   renderQ();
   setTimeout(()=>{ uiLocked=false; renderQ(); }, COOLDOWN_MS);
@@ -590,14 +917,17 @@ const BLOCKS=[
       {
         situacao:'Uma cidade em crescimento precisa de uma nova usina de energia.',
         ruim:{text:'Construir uma usina a carvão, mais barata e rápida', delta:0.15, fb:'Usinas a carvão queimam combustível fóssil e liberam grandes quantidades de CO₂ — o termômetro sobe.'},
+        meio:{text:'Construir uma usina a gás natural, que polui menos que o carvão', delta:0.08, fb:'O gás natural realmente polui menos que o carvão, mas ainda é um combustível fóssil — continua liberando CO₂ e não resolve o problema, só adia.'},
         boa:{text:'Investir em uma usina eólica ou solar', delta:-0.05, fb:'Energia eólica e solar não queimam combustíveis fósseis — o termômetro desce um pouco.'}
       },{
         situacao:'A prefeitura precisa renovar a frota de ônibus da cidade.',
         ruim:{text:'Comprar ônibus a diesel, iguais aos antigos', delta:0.15, fb:'Motores a diesel liberam CO₂ e outros poluentes a cada viagem — o termômetro sobe.'},
+        meio:{text:'Comprar ônibus híbridos, que consomem menos diesel', delta:0.08, fb:'Ônibus híbridos reduzem o consumo de diesel, mas ainda queimam combustível fóssil parte do tempo — é uma melhora parcial, não a solução.'},
         boa:{text:'Comprar ônibus elétricos, sem emissão de gases', delta:-0.05, fb:'Ônibus elétricos não queimam combustível fóssil no motor — o termômetro desce um pouco.'}
       },{
         situacao:'Uma fábrica busca reduzir os custos de produção.',
         ruim:{text:'Manter a produção sem filtros de poluição', delta:0.15, fb:'Sem filtros, a fábrica libera mais gases poluentes direto na atmosfera — o termômetro sobe.'},
+        meio:{text:'Instalar filtros básicos, sem mudar a fonte de energia', delta:0.05, fb:'Filtros básicos retêm parte da poluição, mas não mudam de onde vem a energia da fábrica — ainda sobra bastante gás liberado.'},
         boa:{text:'Instalar filtros e tecnologia limpa na chaminé', delta:-0.05, fb:'Filtros reduzem a quantidade de gases liberados pela fábrica — o termômetro desce um pouco.'}
       }
     ],
@@ -614,14 +944,17 @@ const BLOCKS=[
       {
         situacao:'Uma área de floresta nativa está sob pressão para virar pasto.',
         ruim:{text:'Desmatar a área para abrir espaço para o gado', delta:0.15, fb:'Menos árvores significa menos CO₂ absorvido da atmosfera — o termômetro sobe.'},
+        meio:{text:'Desmatar só uma parte da floresta, com manejo controlado', delta:0.08, fb:'Mesmo com manejo, desmatar parte da floresta ainda reduz a absorção de CO₂ — é menos pior que desmatar tudo, mas não preserva o carbono estocado.'},
         boa:{text:'Preservar a floresta e usar áreas já abertas', delta:-0.05, fb:'Preservar a floresta mantém a absorção de CO₂ — o termômetro desce um pouco.'}
       },{
         situacao:'Agricultores precisam preparar o solo para o plantio.',
         ruim:{text:"Usar queimadas para 'limpar' o terreno rapidamente", delta:0.15, fb:'Queimadas liberam CO₂ e fumaça direto na atmosfera — o termômetro sobe.'},
+        meio:{text:'Reduzir o tamanho das queimadas, mas continuar usando fogo', delta:0.08, fb:'Queimar uma área menor ainda libera CO₂ e fumaça — reduz o problema, mas não elimina.'},
         boa:{text:'Usar rotação de culturas, sem queimar nada', delta:-0.05, fb:'Sem fogo, o solo é preparado sem liberar gases extras — o termômetro desce um pouco.'}
       },{
         situacao:'Uma área degradada perto de um rio precisa de um destino.',
         ruim:{text:'Expandir a cidade sobre a área, sem planejamento', delta:0.15, fb:'Menos vegetação e mais construções aumentam as emissões locais — o termômetro sobe.'},
+        meio:{text:'Construir um parque urbano com pouca vegetação nativa', delta:0.05, fb:'Um parque ajuda, mas com pouca vegetação nativa a absorção de CO₂ fica bem menor do que um reflorestamento de verdade.'},
         boa:{text:'Reflorestar a área com espécies nativas', delta:-0.05, fb:'Novas árvores voltam a absorver CO₂ da atmosfera — o termômetro desce um pouco.'}
       }
     ],
@@ -638,14 +971,17 @@ const BLOCKS=[
       {
         situacao:'A prefeitura decide como investir o orçamento de transporte.',
         ruim:{text:'Construir mais avenidas para incentivar o uso de carros', delta:0.15, fb:'Mais carros circulando significa mais queima de combustível — o termômetro sobe.'},
+        meio:{text:'Ampliar as avenidas e criar uma faixa exclusiva de ônibus', delta:0.08, fb:'A faixa de ônibus ajuda um pouco, mas ampliar avenidas continua incentivando o uso de carros — o efeito principal vai na direção errada.'},
         boa:{text:'Investir em metrô, ônibus e ciclovias', delta:-0.05, fb:'Transporte coletivo e bicicletas emitem muito menos gases por pessoa transportada — o termômetro desce um pouco.'}
       },{
         situacao:'Uma cidade decide como construir seus novos prédios públicos.',
         ruim:{text:'Construir sem nenhuma preocupação com eficiência energética', delta:0.15, fb:'Prédios ineficientes gastam mais energia — geralmente vinda de fontes fósseis — em ar-condicionado e iluminação. O termômetro sobe.'},
+        meio:{text:'Usar iluminação LED, mas sem painéis solares', delta:0.05, fb:'LED economiza energia, mas sem painéis solares o prédio continua dependendo de fontes de energia que podem ser fósseis.'},
         boa:{text:'Construir com eficiência energética e painéis solares', delta:-0.05, fb:'Prédios eficientes consomem bem menos energia — o termômetro desce um pouco.'}
       },{
         situacao:'O lixo de uma cidade precisa de um destino final.',
         ruim:{text:'Manter lixões a céu aberto, que liberam gás metano', delta:0.15, fb:'Lixo em decomposição a céu aberto libera metano, um gás de efeito estufa ainda mais potente que o CO₂ — o termômetro sobe.'},
+        meio:{text:'Fechar os lixões, mas sem sistema de captação de metano', delta:0.08, fb:'Sem captar o metano, o gás continua escapando para a atmosfera — só mudar o lixo de lugar não resolve o problema.'},
         boa:{text:'Construir aterros controlados, que captam o metano', delta:-0.05, fb:'Aterros controlados captam o metano antes que ele escape para a atmosfera — o termômetro desce um pouco.'}
       }
     ],
@@ -676,17 +1012,23 @@ function renderTermoIntro(){
 
 /* Monta a sequência desta tentativa: embaralha a ordem dos 3 blocos e, dentro
    de cada bloco, a ordem das 3 decisões — o evento do bloco vem sempre por
-   último dentro dele. Cada decisão também embaralha a ordem das suas duas
-   opções, para nunca criar um padrão de posição. */
+   último dentro dele. Cada decisão tem 3 opções — a ruim, a boa de verdade
+   e uma "meio-termo" que soa razoável mas não resolve (só reduz um pouco
+   menos pior que a ruim) — para não dar pra acertar só pelo tom da frase.
+   As 3 opções também embaralham de ordem, para nunca criar um padrão. */
 function buildSequence(){
-  const blocks=shuffleArray(BLOCKS);
+  const blocks=FarmeKit.embaralhar(BLOCKS);
   let seq=[];
   blocks.forEach(b=>{
-    const decs=shuffleArray(b.decisions).map(d=>({
+    const decs=FarmeKit.embaralhar(b.decisions).map(d=>({
       type:'decision',
       tema:b.tema,
       situacao:d.situacao,
-      opts:shuffleArray([{...d.ruim,boa:false},{...d.boa,boa:true}])
+      opts:FarmeKit.embaralhar([
+        {...d.ruim, boa:false, tipo:'ruim'},
+        {...d.meio, boa:false, tipo:'meio'},
+        {...d.boa,  boa:true,  tipo:'boa'}
+      ])
     }));
     seq.push(...decs);
     seq.push({type:'event', ...b.event});
@@ -704,6 +1046,8 @@ function comecarTermo(){
     eventsScore:0,
     eventAttempts:{},
     solvedEvents:{},
+    decisionsAcertos:0,             // nº de decisões respondidas com a opção "boa" (a de verdade)
+    eventsAcertosPrimeiraTentativa:0, // nº de eventos classificados certo sem nenhum erro antes
     started:true,
     finished:false
   };
@@ -715,7 +1059,7 @@ function comecarTermo(){
 
 function montarEsqueletoTermo(){
   document.getElementById('termWrapOuter').innerHTML=`
-    <div class="term-instructions">👉 Leia cada situação e escolha uma das duas opções. O termômetro reage na hora. A cada evento, escolha a categoria certa da COBRADE — errar não te trava, só desconta um pouco dos pontos daquele evento.</div>
+    <div class="term-instructions">👉 Leia cada situação com atenção e escolha a opção que resolve de verdade — nem toda opção "mais verde" resolve o problema. O termômetro reage na hora. A cada evento, escolha a categoria certa da COBRADE — errar não te trava, só desconta um pouco dos pontos daquele evento.</div>
     <div class="term-hud" id="termHud"></div>
     <div class="term-stage-row">
       <div class="thermo-col">
@@ -762,7 +1106,7 @@ function renderStageCard(){
         <div class="term-tema">${item.tema}</div>
         <div class="term-situacao">${item.situacao}</div>
         <div class="term-opts" id="termOpts">
-          ${item.opts.map((o,i)=>`<button class="term-opt" onclick="escolherDecisao(${i})">${o.text}</button>`).join('')}
+          ${item.opts.map((o,i)=>`<button class="term-opt" onclick="escolherDecisao(${i},event)">${o.text}</button>`).join('')}
         </div>
         <div class="term-fb" id="termFb"></div>
       </div>`;
@@ -777,14 +1121,14 @@ function renderStageCard(){
           ${['meteorologico','hidrologico','climatologico'].map(cat=>{
             let cls='cobrade-btn';
             if(already && cat===item.correct) cls+=' ok';
-            return `<button class="${cls}" onclick="classificarEvento('${cat}')" ${already?'disabled':''}>${LABEL_COBRADE[cat]}</button>`;
+            return `<button class="${cls}" onclick="classificarEvento('${cat}',event)" ${already?'disabled':''}>${LABEL_COBRADE[cat]}</button>`;
           }).join('')}
         </div>
         <div class="term-fb" id="termFb"></div>
       </div>`;
     if(already){
       document.getElementById('termFb').innerHTML=`<div class="feedback show ok">${item.fb}</div>
-        <div style="text-align:right;margin-top:.75rem"><button class="btn btn-p" onclick="avancarTermo()">Continuar →</button></div>`;
+        <div style="text-align:right;margin-top:.75rem"><button class="btn btn-p" onclick="avancarTermo(event)">Continuar →</button></div>`;
     }
   }
 }
@@ -792,47 +1136,57 @@ function renderStageCard(){
 /* Escolher uma decisão: trava as duas opções desta rodada (anti-clique-duplo),
    move o termômetro, soma pontos se a escolha foi sustentável, e só avança
    quando o aluno clicar em "Continuar" — nunca pula sem interagir. */
-function escolherDecisao(i){
+function escolherDecisao(i,ev){
+  if(!FarmeKit.podeResponder(ev||window.event)) return;
   const item=termState.seq[termState.idx];
-  if(item.done) return;
+  if(item.done){ FarmeKit.liberar(); return; }
   item.done=true;
   const escolha=item.opts[i];
   termState.value=Math.max(0,+(termState.value+escolha.delta).toFixed(2));
-  if(escolha.boa) termState.decisionsScore+=PTS_DECISAO_BOA;
+  if(escolha.boa){ termState.decisionsScore+=PTS_DECISAO_BOA; termState.decisionsAcertos++; }
   sfxClick();
   updateThermoVisual();
   renderHudTermo();
   document.querySelectorAll('#termOpts .term-opt').forEach(b=>b.disabled=true);
-  document.getElementById('termFb').innerHTML=`<div class="feedback show ${escolha.boa?'ok':'err'}">${escolha.fb}</div>
-    <div style="text-align:right;margin-top:.75rem"><button class="btn btn-p" onclick="avancarTermo()">Continuar →</button></div>`;
+  const classeFb = escolha.tipo==='boa' ? 'ok' : escolha.tipo==='meio' ? 'warn' : 'err';
+  document.getElementById('termFb').innerHTML=`<div class="feedback show ${classeFb}">${escolha.fb}</div>
+    <div style="text-align:right;margin-top:.75rem"><button class="btn btn-p" onclick="avancarTermo(event)">Continuar →</button></div>`;
+  FarmeKit.liberar();
 }
 
 /* Classificar um evento pela COBRADE. Nunca bloqueia: errar só desconta
-   pontos (com piso em 0) e deixa tentar de novo, até acertar. */
-function classificarEvento(cat){
+   pontos (com piso em 0) e deixa tentar de novo, até acertar — mas só
+   conta como "acerto" pra trilha de Quest se vier sem erro nenhum antes. */
+function classificarEvento(cat,ev){
+  if(!FarmeKit.podeResponder(ev||window.event)) return;
   const idx=termState.idx;
   const item=termState.seq[idx];
-  if(termState.solvedEvents[idx]) return;
+  if(termState.solvedEvents[idx]){ FarmeKit.liberar(); return; }
   if(cat===item.correct){
     sfxCorrect();
     termState.solvedEvents[idx]=true;
     const wrongs=termState.eventAttempts[idx]||0;
+    if(wrongs===0) termState.eventsAcertosPrimeiraTentativa++;
     const pts=Math.max(0, PTS_EVENTO_CERTO-wrongs*PTS_EVENTO_ERRO);
     termState.eventsScore+=pts;
     renderHudTermo();
     renderStageCard();
+    enviarPontuacaoTotal(); // checkpoint a cada evento resolvido (fim de bloco)
   } else {
     sfxWrong();
     termState.eventAttempts[idx]=(termState.eventAttempts[idx]||0)+1;
     document.getElementById('termFb').innerHTML=`<div class="feedback show err">Não é bem isso. Pense de novo: esse evento está mais ligado ao <strong>ar</strong> (meteorológico), à <strong>água</strong> (hidrológico), ou é um <strong>processo lento</strong> do clima (climatológico)?</div>`;
   }
+  FarmeKit.liberar();
 }
 
-function avancarTermo(){
+function avancarTermo(ev){
+  if(!FarmeKit.podeResponder(ev||window.event)) return;
   termState.idx++;
   renderHudTermo();
   if(termState.idx>=termState.seq.length){ finalizarTermo(); }
   else { renderStageCard(); }
+  FarmeKit.liberar();
 }
 
 /* Fecha a simulação: calcula a pontuação PRIMEIRO (soma dos dois placares já
@@ -861,6 +1215,7 @@ function renderRelatorioTermo(){
         <div class="score-line"><div>Eventos classificados (até ${PTS_EVENTO_CERTO*3} pts)</div><div class="sv">${termState.eventsScore} pts</div></div>
         <div class="score-line total"><div><strong>Total da Prática</strong></div><div class="sv">${practiceScore} pts</div></div>
       </div>
+      ${FarmeKit.blocoResultado()}
       <button class="btn btn-p" onclick="restartTermo()">🔁 Jogar novamente</button>
     </div>`;
 }
@@ -870,49 +1225,28 @@ function restartTermo(){
   comecarTermo();
 }
 
-/* ═══════════════════════ PONTUAÇÃO COMBINADA → FARME ═══════════════════════ */
+/* ═══════════════════════ PONTUAÇÃO COMBINADA → FARME (Kit v2 / trilha de Quest) ═══════════════════════ */
 let practiceScore=0;
+const FARME_ITENS_QUIZ=QRAW.length;
+const FARME_ITENS_PRATICA=9+3; // 9 decisões + 3 eventos (um por bloco)
+function farmePraticaAcertos(){
+  return termState ? (termState.decisionsAcertos + termState.eventsAcertosPrimeiraTentativa) : 0;
+}
+function farmePraticaConcluida(){ return !!(termState && termState.finished); }
 function enviarPontuacaoTotal(){
-  const total=(quizScore*100)+practiceScore;
-  if(window.enviarScoreFarme){
-    window.enviarScoreFarme(total, {
-      corrects: quizScore,
-      totals: QRAW.length
-    });
-  }
+  FarmeKit.atualizar({
+    pontos:        (quizScore*100)+practiceScore,
+    quizAcertos:   quizScore,
+    quizTotal:     FARME_ITENS_QUIZ,
+    quizConcluido: QS.cur>=QUIZ.length,
+    pratAcertos:   farmePraticaAcertos(),
+    pratTotal:     FARME_ITENS_PRATICA,
+    pratConcluida: farmePraticaConcluida()
+  });
 }
 
 renderQ();
 initTermo();
-</script>
-
-<script>
-/* ===== KIT FARME AURA — Integração com iframe ===== */
-(function(){
-  const dentroDoFarme = window.parent && window.parent !== window;
-
-  // Chame esta função sempre que o score do aluno mudar
-  window.enviarScoreFarme = function(pontos, extra){
-    extra = extra || {};
-    const payload = {
-      tipo: 'FARME_ATIVIDADE_SCORE',
-      pontos: Math.max(0, Math.round(pontos || 0)),
-      corrects: extra.corrects || null,
-      totals: extra.totals || null,
-      atividade: document.title || 'Atividade',
-      timestamp: Date.now()
-    };
-    if(dentroDoFarme){
-      window.parent.postMessage(payload, '*');
-    }
-  };
-
-  // Avisa o FARME que o jogo carregou
-  if(dentroDoFarme){
-    window.parent.postMessage({ tipo: 'FARME_ATIVIDADE_PRONTA', atividade: document.title }, '*');
-  }
-})();
-/* ===== FIM DO KIT FARME ===== */
 </script>
 </body>
 </html>
